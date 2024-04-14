@@ -107,6 +107,10 @@ def main():
         save_to_excel(data, 'cv_data.xls')
         st.success("CVs parsed successfully. Download the Excel file below.")
         st.download_button(label="Download CV Data", data=open("cv_data.xls", "rb").read(), file_name="cv_data.xls", mime="application/vnd.ms-excel")
+    
+    # Note section
+    st.markdown("### Note:")
+    st.markdown("Supports only PDF and DOCX formats. Retrieving contact and email can sometimes give empty values, which may be due to format issues. Given more time, I can fix that.")
 
 if __name__ == "__main__":
     main()
