@@ -1,6 +1,6 @@
 import os
 import re
-import pdfplumber
+import PyPDF2
 import textract
 import streamlit as st
 import xlwt
@@ -83,7 +83,7 @@ def save_to_excel(data, output_path):
 def main():
     st.title("CV Parser")
 
-    uploaded_files = st.file_uploader("Upload CVs", accept_multiple_files=True, type=['pdf'])
+    uploaded_files = st.file_uploader("Upload CVs", accept_multiple_files=True, type=['pdf', 'docx'])
 
     if st.button("Parse CVs"):
         data = []
