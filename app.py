@@ -44,6 +44,11 @@ def extract_info_from_doc(doc_path):
     email_match = re.search(email_regex, text)
     if email_match:
         email = email_match.group(0)
+        if email.startswith("pe"):
+        # Remove "pe" if it exists
+            email = re.sub(r'^pe', '', email)
+        else:
+            pass
 
     # Extract contact number using regex
     contact_regex = r'\b\d{10}\b'
@@ -83,7 +88,7 @@ def save_to_excel(data, output_path):
 def main():
     st.title("CV Parser")
 
-    uploaded_files = st.file_uploader("Upload CVs", accept_multiple_files=True, type=['pdf', 'docx'])
+    uploaded_files = st.file_uploader("Upload CVs", accept_multiple_files=True, type=['pdf'])
 
     if st.button("Parse CVs"):
         data = []
